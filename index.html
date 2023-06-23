@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENCRIPTADOR | Jhonatan Véliz</title>
+
+    <link rel="shortcut icon" href="./build/assets/favicon.png" type="image/x-icon">
+    <!-- Css -->
+    <link rel="stylesheet" href="./build/css/normalize.css">
+    <link rel="stylesheet" href="./build/css/main.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+     <div class="loader">
+
+        <div class="loader__container">
+
+            <div class="loader__img">
+                <img src="./build/assets/alura.png" alt="logo">
+            </div>
+            <div class="loader__item">
+                #AluraLatam Oracle Next Education One Group Five
+            </div>
+
+        </div>
+    </div>
+
+    <main class="container">
+
+        <nav class="nav">
+            <a href="./index.html" class="nav__link"><img src="./build/assets/Logo.svg" alt="icono de inicio"></a>
+        </nav>
+    
+        <div>
+            <a href="#aside" class="btn btn-float"><i class="fa-solid fa-arrow-down"></i></a>
+        </div>
+
+        <div class="box-principal">
+            
+            <div class="box">
+
+                <form action="" id="form">
+                    <input class="textarea" id="texto" placeholder="Ingresa tu texto aquí:" ></input>
+                </form>
+
+                <footer class="btn-footer">
+                    <p class="footer-text"><img src="./build/assets/Vector.svg" alt="info"><span class="btn-text m-right"> Solo letras minusculas y sin acento.</span></p>
+
+                    <div class="btn-container">
+                        <button type="button" class="btn btn-primary" id="encriptar">Encriptar</button>
+                        <button type="button" class="btn btn-secundary" id="desencriptar">Desencriptar</button>
+                    </div>
+
+                </footer>
+            </div>
+
+        </div>
+
+        <aside class="aside" id="aside">
+
+            <div class="aside__container" id="aside-principal">
+                <div class="aside__img">
+                    <img src="./build/assets/Muñeco.svg" alt="imagen de aside vacío">
+                </div>
+
+                <div class="aside__text">
+                    <h1 class="aside__title" id="title">Ningún Mensaje fue encontrado</h1>
+
+                    <p class="aside__text">Ingrese el texto que desea encriptar o desencriptar</p>
+                </div>
+
+            </div>
+
+            <div class="aside__result" id="aside-secundary">
+
+                <div class="btn-remove" id="delete">
+                    <button type="button"><img src="./build/assets/delete.png" alt="boton de remover"></button>
+                </div>
+
+                <p class="aside__text aside__text--result" id="result"></p>
+
+                <button type="button" class="btn btn-copy" id="copy"><span class="m-right">Copiar</span><i class="fa-solid fa-clipboard"></i></button>
+            </div>
+
+        </aside>
+    </main>
+
+    <script src="./build/js/index.js"></script>
+    <script src="https://kit.fontawesome.com/ecc2fbab5a.js" crossorigin="anonymous"></script>
+</body>
+</html>
