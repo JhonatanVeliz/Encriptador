@@ -38,6 +38,7 @@
             <a href="./index.html" class="nav__link"><img src="./build/assets/Logo.svg" alt="icono de inicio"></a>
         </nav>
     
+        <!-- Este div aparece cuando estamos en MOVIL -->
         <div>
             <a href="#aside" class="btn btn-float"><i class="fa-solid fa-arrow-down"></i></a>
         </div>
@@ -48,6 +49,9 @@
 
                 <form action="" id="form">
                     <input class="textarea" id="texto" placeholder="Ingresa tu texto aquí:" ></input>
+                    <input type="file" id="file" class="input-file" name="file">
+                    <p id="file-info" class="file-info"></p>
+                    <label for="file" class="boton-file">Seleccionar Archivo.txt</label>
                 </form>
 
                 <footer class="btn-footer">
@@ -90,9 +94,21 @@
             </div>
 
         </aside>
+
+        <div class="warning" id="modalWarning">
+            <div class="warning__content">
+                <p class="warning__text">Recuerda que solo se admiten archivos .txt y que el diccionario sea similar al de la imagen</p>
+                <div class="warning__img"><img src="./build/assets/example.JPG" alt="modelo del diccionario a seguir" id="img"></div>
+                <div class="warning__btns">
+                    <button class="warning__btn warning__btn--red" id="cerrarWarning">Aceptar</button>
+                    <button class="warning__btn warning__btn--blue">Crear uno nuevo</button>
+                </div>
+            </div>
+        </div>
     </main>
 
-    <script src="./build/js/index.js"></script>
+    <script src="./chiper.js"></script>
     <script src="https://kit.fontawesome.com/ecc2fbab5a.js" crossorigin="anonymous"></script>
 </body>
 </html>
+

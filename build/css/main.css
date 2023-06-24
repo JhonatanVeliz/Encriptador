@@ -136,6 +136,8 @@ button {
 /* SECCION INPUT DE TEXTO */
 #form{
     margin-top: -10rem;
+    display: flex;
+    flex-direction: column-reverse;
 }
 .textarea {
     width: 100%;
@@ -151,6 +153,35 @@ button {
 }
 .textarea:focus {
     outline: none;
+}
+.input-file{
+    display: none;
+}
+.file-info{
+    padding: 1rem;
+    margin-top: 1.5rem;
+    background-color: var(--color-blueDark);
+    color: var(--color-white);
+    display: flex;
+    width: 10rem;
+    justify-content: center;
+    max-width: 100%;
+    border-radius: .5rem;
+    visibility: hidden;
+    transition: visiblity .3s linear;
+}
+.visible{
+    visibility: visible;
+}
+.boton-file{
+    padding: 1.5rem;
+    max-width: 25rem;
+    border-radius: .5rem;
+    color: var(--color-greyLigth);
+    font-family: var(--font-body);
+    text-align: center;
+    background-color: #434343;
+    cursor: pointer;
 }
 .btn-footer {
     width: 100%;
@@ -326,6 +357,55 @@ button {
     cursor: pointer;
     box-sizing: border-box;
 }
+.warning{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #000000be;
+    display: grid;
+    place-items: center;
+    visibility: hidden;
+    z-index: -1;
+}
+.warning__content{
+    width: 90%;
+    padding: 2rem;
+    border-radius: 1rem;
+    background-color: var(--color-greyLigth);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.warning__text{
+    font-size: 1.8rem;
+    text-align: center;
+}
+.warning__img{
+    margin: 1.5rem 0;
+}
+.warning__btns{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
+.warning__btn{
+    padding: 1.5rem;
+    margin-right: 1rem;
+    color: var(--color-greyLigth);
+    background-color: #0A3871;
+    cursor: pointer;
+    border: none;
+    border-radius: .5rem;
+}
+.warning__btn--red{
+    background-color: rgb(178, 19, 19);
+}
+.warning--activo{
+    z-index: 10;
+    visibility: visible;
+}
 @media screen and (max-width: 865px) {
     .aside {
         width: 50%;
@@ -365,14 +445,17 @@ button {
         margin-top: 0;
     }
     .textarea {
-        min-height: 60vh;
+        min-height: auto;
         max-height: 60vh;
         text-align: center;
-        padding-top: 20rem;
+    }
+    .boton-file{
+        margin-top: 15rem;
     }
     .aside {
         width: 100%;
         max-width: 100%;
+        margin-top: 2rem;
     }
     .aside__img {
         display: none;
@@ -385,6 +468,9 @@ button {
     }
 }
 @media screen and (max-width: 500px) {
+    .textarea{
+        padding-top: 20rem;
+    }
     .btn-container{
         grid-template-columns: 1fr;
     }
@@ -394,6 +480,12 @@ button {
     .textarea{
         font-size: 3.3rem;
     }
+    .aside{
+        margin-top: 13rem;
+    }
+    .boton-file{
+        margin-top: 19rem;
+    }
 }
 @media screen and (max-width: 400px) {
     .textarea{
@@ -401,5 +493,8 @@ button {
     }
     .btn-float{
         bottom: 25rem;
+    }
+    .aside{
+        margin-top: 14rem;
     }
 }

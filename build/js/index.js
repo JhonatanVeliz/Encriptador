@@ -15,7 +15,21 @@ const asidePincipal = document.querySelector('#aside-principal'),
 // MENSAJE DE ALERTA
 const messageAlert = document.querySelector('#title');
 
-// FUNCIONES
+const dicAlura = {
+    a : 'ai',
+    e : 'enter',
+    i : 'imes',
+    o : 'ober',
+    u : 'ufat'
+};
+
+const dicReverse = {
+    ai    : 'a',
+    enter : 'e',
+    imes  : 'i',
+    ober  : '0',
+    ufat  : 'u'
+};
 // FUNCION QUE ENCRIPTA, AL DAR CLICK AL BTN O UN ENTER, EL TEXTO PASA A SER MINUSCULAS Y LUEGO CON EL METODO REPLACE SE VERIFICA CON EXPRESIONES REGULARES SI EN EL STRING HAY IGUALDAD PARA QUE ESTE SEA REMPLAZADO.
 
 const encriptarMessage = ()=>{
