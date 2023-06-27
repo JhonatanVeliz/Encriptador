@@ -36,6 +36,7 @@ const userDicNameRemoveAdd = (bolean, _text = '')=>{
         userDicName.classList.add('visible');
     }else{
         userDicName.classList.remove('visible');
+        dictionary = { ...defaultAluraDic};
     }
     userDicName.innerText = _text;
 }
