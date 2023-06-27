@@ -1,9 +1,5 @@
 const $ = (element, nodo = document.body)=> nodo.querySelector(element);
 
-const userDic = $('#file');
-userDic.value = '';
-const userDicName = $('#file-info');
-
 const defaultAluraDic = {
     a : 'ai',
     e : 'enter',
@@ -12,12 +8,17 @@ const defaultAluraDic = {
     u : 'ufat'
 };
 
+const userDic = $('#file');
+userDic.value = '';
+const userDicName = $('#file-info');
+
+
 const pojoReverse = pojo => Object.keys(pojo).reduce((acm, key) => {
     acm[pojo[key]] = key;
     return acm;
 }, {});
 
-let dictionary = null; 
+let dictionary = { ...defaultAluraDic}; 
 let dictionaryReverse = null;
 
 // Diccionario Listo para usar
@@ -29,27 +30,33 @@ function fileDic(target){
     }
 }
 
+// Aparicion y desaparicion del boton del UserDicName
+const userDicNameRemoveAdd = (bolean, _text = '')=>{
+    if(bolean){
+        userDicName.classList.add('visible');
+    }else{
+        userDicName.classList.remove('visible');
+    }
+    userDicName.innerText = _text;
+}
+
 // Verificiacion del userDic
 userDic.addEventListener('change', (e)=>{
     const file = e.target.files[0];
     const fileReader = new FileReader();
     fileReader.readAsText(file);
     fileReader.addEventListener('load', (e)=>{
-        userDicName.innerText = file.name;
-        userDicName.classList.toggle('visible');
+        userDicNameRemoveAdd(true, file.name);
         fileDic(e.target.result);
     })
 })
 
 // Funcion donde verifica que Diccionario se va a utilizar
 const pojo = ()=>{
-    if(userDicName.textContent.length === 0){
-        dictionary = defaultAluraDic;
-    }
     dictionaryReverse = pojoReverse(dictionary);
     return rexifyKeys(dictionary);
 };
-pojo();
+
 // Funcion que genera la REGEX
 function rexifyKeys(dic){
     const joinedKeys = Object.keys(dic).join('|');
@@ -73,9 +80,8 @@ const paragraphResult = $('#result');
 const btnClear = $('#delete');
 const btnCopy  = $('#copy');
 
-const imgDictionary = $('#img');
 const modalDictionary = $('#modalWarning');
-const btnCerrarDicExample = $('#cerrarWarning');
+const contentCreateDic = $('.warning__content');
 
 // Animacion del boton desencriptar
 const animationDesencriptar = ()=>{
@@ -121,10 +127,10 @@ const clearResult = ()=>{
 }
 // Funcion que copia el texto del resultado
 const fCopy = ()=>{
-    copy.classList.add('copy--active');
+    btnCopy.classList.add('copy--active');
 
     setTimeout( ()=>{
-        copy.classList.remove('copy--active');
+        btnCopy.classList.remove('copy--active');
     }, 1100)
 
     navigator.clipboard.writeText(paragraphResult.textContent);
@@ -135,36 +141,77 @@ const dicExample = ()=>{
 };
 
 const stringValidationReverse = ()=>{
-    const texto = paragraphResult.textContent;
-    showResult()
-    if(text.value === ''){
-        const textoResult = texto.replace(rexifyKeys(dictionaryReverse), function (match) {
-            return dictionaryReverse[match];
-        });
-        paragraphResult.textContent = textoResult;
-    }else{
-        const textoResult = text.value.replace(rexifyKeys(dictionaryReverse), function (match) {
-            return dictionaryReverse[match];
-        });
-        paragraphResult.textContent = textoResult;
+    const texto = paragraphResult.textContent;    
+    try {
+        showResult()
+        if(text.value === ''){
+            const textoResult = texto.replace(rexifyKeys(dictionaryReverse), function (match) {
+                return dictionaryReverse[match];
+            });
+            paragraphResult.textContent = textoResult;
+        }else{
+            const textoResult = text.value.replace(rexifyKeys(dictionaryReverse), function (match) {
+                return dictionaryReverse[match];
+            });
+            paragraphResult.textContent = textoResult;
+        }
+    } catch (error) {
+        paragraphResult.textContent = 'No hay nada para desencriptar';
     }
+
 };
 
-// Cambiar la imagen en cierto tamaño de la pantalla
-(function(){
-    if(window.screen.width <= 480){
-        imgDictionary.src = './build/assets/example-movil.JPG';
-    }
-})();
+// Funcion que remplaza el contenido para crear un nuevo Dic
+const createDic = (bolean)=>{
+    if(!bolean){
+        contentCreateDic.innerHTML = `
+        <p class="warning__text">Recuerda que solo se admiten archivos .txt y que el diccionario sea similar al de la imagen</p>
+            <div class="warning__img"><img src="${(window.screen.width <= 480) ? './build/assets/example-movil.JPG' : './build/assets/example.JPG'}" alt="modelo del diccionario a seguir" id="img"></div>
+            <div class="warning__btns">
+                <button class="warning__btn warning__btn--red" onclick="dicExample()">Aceptar</button>
+                <button class="warning__btn warning__btn--blue" id="crearDic" onclick="createDic(true)">Crear uno nuevo</button>
+            </div>
+        `
+    }else{
+        contentCreateDic.innerHTML = `
+        <div class="dicContent">
+            <input type="text" class="inputDic" value='{ "a": "remplazo", "e": "remplazo", "i": "remplazo", "o": "remplazo", "u": "remplazo" }'>
+            <div class="warning__btns">
+                <button class="warning__btn warning__btn--red" onclick="crearNewDic()">Aceptar</button>
+                <button class="warning__btn warning__btn--blue" onclick="deleteNewDic()"">Cancelar</button>
+            </div>
+        </div>
+        `;
+    };
+}
+createDic(false);
+const removeClassNewDic = ()=>{
+    const parentNodeContent = contentCreateDic.parentNode;
+    parentNodeContent.classList.toggle('warning--activo');
+}
 
+const crearNewDic = ()=>{
+    const textoNewDic = $('.inputDic').value;
+    dictionary = JSON.parse(textoNewDic);
+    removeClassNewDic();
+    createDic(false);
+}
+
+const deleteNewDic = ()=>{
+    removeClassNewDic();
+    createDic(false);
+}
 
 // Prevencion del evento submit en el formulario
 form.addEventListener('submit', (e)=>{
     e.preventDefault();
 })
+
 btnEncriptar.addEventListener('click', stringValidation);
 btnDesencriptar.addEventListener('click', stringValidationReverse);
 btnClear.addEventListener('click', clearResult);
 btnCopy.addEventListener('click', fCopy);
-btnCerrarDicExample.addEventListener('click', dicExample);
 userDic.addEventListener('click', dicExample);
+userDicName.addEventListener('click', ()=>{
+    userDicNameRemoveAdd(false);
+});

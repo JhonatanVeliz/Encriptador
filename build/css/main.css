@@ -167,11 +167,15 @@ button {
     justify-content: center;
     max-width: 100%;
     border-radius: .5rem;
-    visibility: hidden;
-    transition: visiblity .3s linear;
+    opacity: 0;
+    transition: background-color .3s linear;
+}
+.file-info:hover{
+    cursor: pointer;
+    background-color: rgb(195, 30, 30);
 }
 .visible{
-    visibility: visible;
+    opacity: 1;
 }
 .boton-file{
     padding: 1.5rem;
@@ -366,7 +370,7 @@ button {
     background-color: #000000be;
     display: grid;
     place-items: center;
-    visibility: hidden;
+    opacity: 0;
     z-index: -1;
 }
 .warning__content{
@@ -377,15 +381,17 @@ button {
     display: flex;
     flex-direction: column;
     align-items: center;
+    transition: .3s linear;
 }
 .warning__text{
     font-size: 1.8rem;
     text-align: center;
 }
 .warning__img{
-    margin: 1.5rem 0;
+    margin-top: 1.5rem;
 }
 .warning__btns{
+    margin-top: 1.5rem;
     width: 100%;
     display: flex;
     justify-content: flex-start;
@@ -404,7 +410,17 @@ button {
 }
 .warning--activo{
     z-index: 10;
-    visibility: visible;
+    opacity: 1;
+}
+.dicContent{
+    width: 100%;
+}
+.inputDic{
+    width: 100%;
+    border: none;
+    box-shadow: 0px 0px 2px #000;
+    border-radius: .5rem;
+    font-size: 2.5rem;
 }
 @media screen and (max-width: 865px) {
     .aside {
@@ -455,7 +471,7 @@ button {
     .aside {
         width: 100%;
         max-width: 100%;
-        margin-top: 2rem;
+        margin-top: 4rem;
     }
     .aside__img {
         display: none;
@@ -481,7 +497,7 @@ button {
         font-size: 3.3rem;
     }
     .aside{
-        margin-top: 13rem;
+        margin-top: 15rem;
     }
     .boton-file{
         margin-top: 19rem;
