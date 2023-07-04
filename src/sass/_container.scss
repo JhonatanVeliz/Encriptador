@@ -1,0 +1,14 @@
+@use 'variables' as v;
+
+body{
+    background-color: v.$color-gray-light;
+    transition: .2s linear;
+}
+.body--dark{
+    background-color: v.$color-dark;
+}
+.container{
+    display: flex;
+    padding: 2rem;
+    max-width: 140rem;
+}

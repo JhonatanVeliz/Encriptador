@@ -1,0 +1,73 @@
+@use 'variables' as v;
+
+.content{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    font-family: v.$font;
+    padding-right: 2rem;
+    &__file{
+        width: 100%;
+        &__btn{
+            font-size: 1.8rem;
+            display: inline-block;
+            border-radius: v.$radius;
+            padding: 1.5rem 2rem;
+            background-color: v.$color-gray-dark;
+            color: v.$color-white;
+            margin-right: .5rem;
+            cursor: pointer;
+            transition: .2s linear;
+            &--info{
+                background-color: v.$color-blue-Dark;
+                &:hover{
+                    background-color: v.$color-dark-red;
+                }
+            }
+        }
+    }
+    &__text{
+        padding: 30vh 0;
+    }
+    &__footer{
+        width: 100%;
+        &__info{
+            display: flex;
+            &__paragraph{
+                margin-left: 1rem;
+                font-weight: 200;
+                font-size: 1.5vw;
+            }
+        }
+        &__buttons{
+            display: flex;
+            justify-content: space-between;
+            padding-top: 2rem;
+        }
+        &__btn{
+            display: inline-block;
+            width: 48%;
+            padding: 2rem 1.5rem;
+            border: none;
+            border-radius: 1.5rem;
+            background-color: v.$color-blue-Dark;
+            color: v.$color-white;
+            font-size: 1.3vw;
+            font-weight: 300;
+            &--desencriptar{
+                background-color: #303030;
+            }
+            &:hover{
+                opacity: .9;
+            }
+        }
+    }
+}
+.text{
+    background: transparent;
+    border: none;
+    font-size: 3vw;
+    outline: none;
+    color: v.$color-blue-Dark;
+    font-weight: 200;
+}

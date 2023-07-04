@@ -1,0 +1,100 @@
+@use 'variables' as v;
+
+.result{
+    flex-grow: 1;
+    min-width: 35rem;
+    max-width: 35rem;
+    background-color: v.$color-white;
+    padding: 2rem;
+    border-radius: 1.5rem;
+    box-shadow: 1px .5rem .6rem #c5bcbc;
+    &__muneco{
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        font-family: v.$font;
+        &__info{
+            text-align: center;
+            line-height: 1.3;
+            font-size: 2vw;
+        }
+        &__paragraph{
+            text-align: center;
+            color: v.$color-gray-dark;
+            font-size: 1.3vw;
+            line-height: 1.3;
+            padding-top: 5rem;
+        }
+    }
+    &__text{
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+        &__clear{
+            position: absolute;
+            top: -1rem;
+            right: -1rem;
+            max-width: 3rem;
+            cursor: pointer;
+        }
+        &__paragraph{
+            font-family: v.$font;
+            font-size: 1.3vw;
+            padding-right: 2rem;
+            color: v.$color-gray-dark;
+        }
+        &__copy{
+            width: 100%;
+            &__btn{
+                position: relative;
+                width: 100%;
+                padding: 1.5rem;
+                border: none;
+                border-radius: 1rem;
+                background-color: v.$color-green;
+                color: v.$color-white;
+                font-family: v.$font;
+                font-size: 1.4vw;
+                font-weight: 200;
+                &--active::after{
+                    content: 'Copiado';
+                    color: v.$color-white;
+                    background-color: v.$color-gray-dark;
+                    position: absolute;
+                    width: 50%;
+                    height: 100%;
+                    top: -7rem;
+                    left: 25%;
+                    border-radius: 1rem;
+                    display: grid;
+                    place-items: center;
+                    font-size: 1.7rem;
+                    transition: .3s linear;
+                    animation: copiado 1.5s alternate forwards;
+                }
+            }
+        }
+    }
+}
+.parrafo-claro{
+    color: v.$color-white;
+}
+@keyframes copiado {
+    from{
+        opacity: 1;
+    }
+    to{
+        opacity: 0;
+    }
+}
+.display-none{
+    height: 0;
+    overflow: hidden;
+    z-index: -1;
+    opacity: 0;
+    display: none;
+}

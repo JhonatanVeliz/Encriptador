@@ -1,0 +1,12 @@
+a, button, label{
+    transition: .3s linear;
+    cursor: pointer;
+}
+.btn:hover{
+    opacity: .9;
+}
+.mode{
+    background: transparent;
+    border: none;
+    max-width: 5rem;
+}

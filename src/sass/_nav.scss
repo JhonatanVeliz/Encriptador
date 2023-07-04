@@ -1,0 +1,12 @@
+@use 'variables' as v;
+.nav{
+    min-width: 9rem;
+    max-width: 12rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+.mode:hover{
+    transform: scale(1.1) rotate(-15deg);
+}

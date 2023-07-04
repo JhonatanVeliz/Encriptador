@@ -1,0 +1,1 @@
+export const $ = (nodo, documento = document)=> documento.querySelector(nodo);
