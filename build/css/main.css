@@ -276,6 +276,7 @@ button {
     justify-content: space-between;
 }
 .result__btns{
+    padding-top: 1.5rem;
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: .5rem;
