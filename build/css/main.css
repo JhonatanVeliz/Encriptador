@@ -275,12 +275,20 @@ button {
     flex-direction: column;
     justify-content: space-between;
 }
+.result__btns{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: .5rem;
+}
 .btn-copy {
     position: relative;
     background-color: #35a81b;
 }
 .btn-copy:hover {
     background-color: #33941d;
+}
+.btn-reproducir{
+    background-color: var(--color-blueDark);
 }
 .copy--active::after{
     content: '¡ Copiado !';
