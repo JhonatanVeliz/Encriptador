@@ -4,4 +4,4 @@ oracle-cipher
 ## tecnologías:
 html
 css
-javascript
+javascript vanilla
